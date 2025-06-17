@@ -10,6 +10,8 @@ class CommunicationWidgetsPage extends StatefulWidget {
 }
 
 class _CommunicationWidgetsPageState extends State<CommunicationWidgetsPage> {
+  double progress = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +40,7 @@ class _CommunicationWidgetsPageState extends State<CommunicationWidgetsPage> {
                           child: Icon(Icons.warning),
                         ),
                       ),
-                      SizedBox(width: 50.00),
+                      SizedBox(width: 25.00),
                       IconButton(
                         onPressed: () {},
 
@@ -48,6 +50,95 @@ class _CommunicationWidgetsPageState extends State<CommunicationWidgetsPage> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          AppStyles.categoryContentContainer(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  '2.Linear Progress Indicator',
+                  style: AppStyles.subcategoryTitle,
+                ),
+                Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      LinearProgressIndicator(
+                        value: progress / 100, // Convert 0–100 to 0.0–1.0
+                        backgroundColor: Colors.teal.shade100,
+                        color: Colors.teal,
+                        minHeight: 8,
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        '${progress.toInt()}%',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (progress < 100) progress += 10;
+                              });
+                            },
+                            child: const Text('Add 10%'),
+                          ),
+                          SizedBox(width: 10.00),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                progress = 0;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.redAccent,
+                            ),
+                            child: Text(
+                              'Reset',
+                              style: TextStyle(color: Colors.teal[50]),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          AppStyles.categoryContentContainer(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('3.SnackBar', style: AppStyles.subcategoryTitle),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('This is a SnackBar'),
+                          action: SnackBarAction(
+                            label: 'Again?',
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: const Text('This is a SnackBar'),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text('Click Here to see SnackBar'),
                   ),
                 ),
               ],
