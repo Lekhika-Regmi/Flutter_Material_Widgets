@@ -1,0 +1,238 @@
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
+//         useMaterial3: true,
+//       ),
+//       home: SafeArea(
+//         child: Scaffold(
+//           backgroundColor: Colors.brown[100],
+//           body:
+//               //common buttons
+//               // ButtonTypesExample(),
+//               FloatingActionButtonTrial(),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class ButtonTypesExample extends StatelessWidget {
+//   const ButtonTypesExample({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return Padding(
+//       padding: EdgeInsets.all(10.0),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//
+//         children: [
+//           Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               ElevatedButton(
+//                 onPressed: () {
+//                   ScaffoldMessenger.of(context).showSnackBar(
+//                     const SnackBar(content: Text('Button Pressed')),
+//                   );
+//                 },
+//                 child: Text('Press'),
+//               ),
+//               FilledButton(
+//                 onPressed: () {
+//                   ScaffoldMessenger.of(context).showSnackBar(
+//                     const SnackBar(content: Text('Filled Button Pressed')),
+//                   );
+//                 },
+//                 //   style: FilledButton.styleFrom(backgroundColor: Colors.brown),
+//                 child: Text('Filled'),
+//               ),
+//
+//               FilledButton.tonal(
+//                 onPressed: () {
+//                   ScaffoldMessenger.of(context).showSnackBar(
+//                     const SnackBar(content: Text('Filled Button Pressed')),
+//                   );
+//                 },
+//                 child: Text('filled tonal'),
+//               ),
+//               OutlinedButton(
+//                 onPressed: () {
+//                   ScaffoldMessenger.of(context).showSnackBar(
+//                     const SnackBar(content: Text('outline Button Pressed')),
+//                   );
+//                 },
+//                 child: Text('outline'),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+//
+// class FloatingActionButtonTrial extends StatelessWidget {
+//   const FloatingActionButtonTrial({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return Padding(
+//       padding: const EdgeInsets.all(10.0),
+//       child: Column(
+//         spacing: 15.0,
+//         children: [
+//           FloatingActionButton.extended(
+//             onPressed: () {},
+//             icon: Icon(Icons.access_alarm_outlined),
+//             label: Text('Button Description'),
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: <Widget>[
+//               FloatingActionButton.large(
+//                 onPressed: () {
+//                   // Add your onPressed code here!
+//                 },
+//                 child: const Icon(Icons.add),
+//               ),
+//               FloatingActionButton(
+//                 onPressed: () {
+//                   // Add your onPressed code here!
+//                 },
+//                 child: const Icon(Icons.face),
+//               ),
+//               FloatingActionButton.small(
+//                 onPressed: () {
+//                   // Add your onPressed code here!
+//                 },
+//                 child: const Icon(Icons.minimize),
+//               ),
+//             ],
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.all(10.0),
+//             child: IconButtonExample(),
+//           ),
+//           SizedBox(width: 350, height: 45, child: SegmentedButtonExample()),
+//         ],
+//       ),
+//     );
+//   }
+// }
+//
+// class IconButtonExample extends StatefulWidget {
+//   const IconButtonExample({super.key});
+//
+//   @override
+//   State<StatefulWidget> createState() => _IconButtonExampleState();
+// }
+//
+// double _volume = 0.0;
+// //const double _mute = 0.0;
+// dynamic _volumeValue = 0.0;
+//
+// class _IconButtonExampleState extends State<IconButtonExample> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         IconButton(
+//           onPressed: () {
+//             setState(() {
+//               if (_volume > 0) {
+//                 _volume -= 10;
+//               } else {
+//                 _volume = 0.0;
+//               }
+//               _volumeValue = _volume;
+//             });
+//           },
+//           iconSize: 40.0,
+//           icon: const Icon(Icons.volume_down),
+//           tooltip: 'Decrease volume by 10',
+//         ),
+//         IconButton(
+//           onPressed: () {
+//             setState(() {
+//               _volumeValue = 'Muted';
+//             });
+//           },
+//           iconSize: 40.0,
+//           icon: const Icon(Icons.volume_off),
+//           tooltip: 'Mute volume',
+//         ),
+//         IconButton(
+//           onPressed: () {
+//             setState(() {
+//               _volume += 10;
+//               _volumeValue = _volume;
+//             });
+//           },
+//           iconSize: 40.0,
+//           icon: const Icon(Icons.volume_up),
+//           tooltip: 'Increase volume by 10',
+//         ),
+//         Text('Volume : $_volumeValue '),
+//       ],
+//     );
+//   }
+// }
+//
+// class SegmentedButtonExample extends StatefulWidget {
+//   const SegmentedButtonExample({super.key});
+//
+//   @override
+//   State<StatefulWidget> createState() => SegmentedButtonExampleState();
+// }
+//
+// class SegmentedButtonExampleState extends State<SegmentedButtonExample> {
+//   Set<String> _selected = {'Lyrics'};
+//   void updateSelected(Set<String> newSelection) {
+//     setState(() {
+//       _selected = newSelection;
+//     });
+//   }
+//
+//   final segmentTextStyle = TextStyle(fontSize: 18);
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return SegmentedButton(
+//       segments: <ButtonSegment<String>>[
+//         ButtonSegment<String>(
+//           value: 'Up Next',
+//           label: Text('Up Next', style: segmentTextStyle),
+//         ),
+//         ButtonSegment<String>(
+//           value: 'Lyrics',
+//           label: Text('Lyrics', style: segmentTextStyle),
+//         ),
+//         ButtonSegment<String>(
+//           value: 'Related',
+//           label: Text('Related', style: segmentTextStyle),
+//         ),
+//       ],
+//
+//       selected: _selected,
+//       onSelectionChanged: updateSelected,
+//     );
+//   }
+// }
+
+
