@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/styles.dart';
+
 class NavigationWidgetsPage extends StatefulWidget {
   const NavigationWidgetsPage({super.key});
 
@@ -10,6 +12,8 @@ class NavigationWidgetsPage extends StatefulWidget {
 class _NavigationWidgetsPageState extends State<NavigationWidgetsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('Navigation', style: AppStyles.categoryTitle)),
+    );
   }
 }
